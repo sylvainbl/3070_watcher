@@ -1,5 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
+import time
+import ctypes
 
 
 def find_prices():
@@ -26,4 +28,11 @@ def analyse_prices(array_prices, limit):
     return False
 
 
-print(analyse_prices(find_prices(), 580))
+def Mbox(title, text, style):
+    return ctypes.windll.user32.MessageBoxW(0, text, title, style)
+
+
+if __name__ == "__main__":
+    Mbox("3070 EN STOCK", "ELLE EST DE RETOUR", 0)
+    time.sleep(4)
+    print(analyse_prices(find_prices(), 580))
