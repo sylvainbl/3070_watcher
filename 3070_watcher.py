@@ -17,14 +17,13 @@ def find_prices():
         price_elem = price.find('span')
         array_prices.append(int(price_elem.text))
 
-    print(array_prices)
     return array_prices
 
 
-def analyse_prices(array_prices):
-    if min(array_prices) < 580:
+def analyse_prices(array_prices, limit):
+    if min(array_prices) < limit:
         return True
     return False
 
 
-print(analyse_prices(find_prices()))
+print(analyse_prices(find_prices(), 580))
