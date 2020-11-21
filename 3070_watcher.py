@@ -22,17 +22,21 @@ def find_prices():
     return array_prices
 
 
-def analyse_prices(array_prices, limit):
-    if min(array_prices) < limit:
-        return True
-    return False
-
-
 def Mbox(title, text, style):
     return ctypes.windll.user32.MessageBoxW(0, text, title, style)
 
 
+def analyse_prices(array_prices, limit):
+    min_price = min(array_prices)
+    if min_price < limit:
+        Mbox("3070 EN STOCK", "ELLE EST DE RETOUR A " + str(min_price) + " €", 0)
+        return True
+    return False
+
+
 if __name__ == "__main__":
-    Mbox("3070 EN STOCK", "ELLE EST DE RETOUR", 0)
-    time.sleep(4)
-    print(analyse_prices(find_prices(), 580))
+    found = False
+    while found == False:
+        found = analyse_prices(find_prices(), 670)
+        if not found:
+            time.sleep(60)
