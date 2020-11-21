@@ -28,6 +28,7 @@ def Mbox(title, text, style):
 
 def analyse_prices(array_prices, limit):
     min_price = min(array_prices)
+    print(min_price)
     if min_price < limit:
         Mbox("3070 EN STOCK", "ELLE EST DE RETOUR A " + str(min_price) + " €", 0)
         return True
